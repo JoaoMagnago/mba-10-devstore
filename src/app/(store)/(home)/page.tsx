@@ -4,7 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 async function getFeaturedProducts(): Promise<Product[]> {
-  const response = await api('/products/featured')
+  const response = await api('/products/featured', {
+    cache: 'no-store', // force-cache: request is made once and stored in cache | no-store: request is made everytime a different user loads the page
+    next: {
+      // revalidate: 60 * 60, // request is made once, and for an hour (in this case) or any other number of seconds provided to this field, every user will access the same response
+    },
+  })
 
   const products = await response.json()
 
