@@ -16,7 +16,7 @@ jobs:
           cache: 'npm'
 
       - name: Cypress run
-        uses: cypress-io/github-actions@v6
+        uses: cypress-io/github-action@v6
         env:
           APP_URL: "http://localhost:3000"
           NEXT_PUBLIC_API_BASE_URL: "https://devstore-api-joao-magnagos-projects.vercel.app/"
